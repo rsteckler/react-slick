@@ -105,7 +105,8 @@ var helpers = {
         });
       }
 
-      callback = () => {
+      callback = (e, f, g) => {
+        console.log("e:" + e + " f: " + f + " g: " + g);
         this.setState({
           animating: false
         });
