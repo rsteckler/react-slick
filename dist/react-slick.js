@@ -833,8 +833,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	      }
 
-	      callback = function (e, f, g) {
-	        console.log("e:" + e + " f: " + f + " g: " + g);
+	      callback = function () {
 	        _this.setState({
 	          animating: false
 	        });
@@ -938,12 +937,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        swipeLeft: null
 	      };
 
-	      callback = function () {
-	        _this.setState(nextStateChanges);
-	        if (_this.props.afterChange) {
-	          _this.props.afterChange(currentSlide);
+	      callback = function (e) {
+	        if (e.propertyName == "transform") {
+	          _this.setState(nextStateChanges);
+	          if (_this.props.afterChange) {
+	            _this.props.afterChange(currentSlide);
+	          }
+	          _reactLibReactTransitionEvents2['default'].removeEndEventListener(_ReactDOM2['default'].findDOMNode(_this.refs.track), callback);
 	        }
-	        _reactLibReactTransitionEvents2['default'].removeEndEventListener(_ReactDOM2['default'].findDOMNode(_this.refs.track), callback);
 	      };
 
 	      this.setState({
