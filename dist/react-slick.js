@@ -1379,7 +1379,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  if (spec.rtl) {
 	    index = spec.slideCount - 1 - spec.index;
-	    console.log();
 	  } else {
 	    index = spec.index;
 	  }
@@ -1460,7 +1459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        preCloneSlides.push(_react2['default'].cloneElement(child, {
 	          key: key,
 	          'data-index': key,
-	          className: getSlideClasses((0, _objectAssign2['default'])({ index: key }, spec)),
+	          className: (0, _classnames2['default'])(getSlideClasses((0, _objectAssign2['default'])({ index: key }, spec)), child.props.className),
 	          style: (0, _objectAssign2['default'])({}, child.props.style || {}, childStyle)
 	        }));
 	      }
@@ -1470,7 +1469,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        postCloneSlides.push(_react2['default'].cloneElement(child, {
 	          key: key,
 	          'data-index': key,
-	          className: getSlideClasses((0, _objectAssign2['default'])({ index: key }, spec)),
+	          className: (0, _classnames2['default'])(getSlideClasses((0, _objectAssign2['default'])({ index: key }, spec)), child.props.className),
 	          style: (0, _objectAssign2['default'])({}, child.props.style || {}, childStyle)
 	        }));
 	      }
