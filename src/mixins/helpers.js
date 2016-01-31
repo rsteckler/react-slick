@@ -105,8 +105,7 @@ var helpers = {
         });
       }
 
-      callback = (e, f, g) => {
-        console.log("e:" + e + " f: " + f + " g: " + g);
+      callback = () => {
         this.setState({
           animating: false
         });
@@ -211,12 +210,14 @@ var helpers = {
         swipeLeft: null
       };
 
-      callback = () => {
-        this.setState(nextStateChanges);
-        if (this.props.afterChange) {
-          this.props.afterChange(currentSlide);
+      callback = (e) => {
+        if (e.propertyName == "transform") {
+          this.setState(nextStateChanges);
+          if (this.props.afterChange) {
+            this.props.afterChange(currentSlide);
+          }
+          ReactTransitionEvents.removeEndEventListener(ReactDOM.findDOMNode(this.refs.track), callback);
         }
-        ReactTransitionEvents.removeEndEventListener(ReactDOM.findDOMNode(this.refs.track), callback);
       };
 
       this.setState({
